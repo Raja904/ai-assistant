@@ -24,10 +24,11 @@ jobs:
         pip install -r requirements.txt
 
     - name: Write credentials.json
-      run: echo "${{ secrets.CREDENTIALS_JSON }}" > credentials.json
+      run: echo "${{ secrets.CREDENTIALS_JSON }}" | base64 --decode > credentials.json
 
     - name: Write token.json
-      run: echo "${{ secrets.TOKEN_JSON }}" > token.json
+      run: echo "${{ secrets.TOKEN_JSON }}" | base64 --decode > token.json
+
 
     - name: Write .env file
       run: echo "${{ secrets.DOTENV }}" > .env
