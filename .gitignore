@@ -1,6 +1,6 @@
 .env
 credentials.json
-tokents.json
+token.json
 __pycache__/
 *.pyc
 *.pyo

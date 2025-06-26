@@ -6,6 +6,10 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 import asyncio
 from langchain_core.messages import AIMessage
 from langgraph.checkpoint.memory import InMemorySaver
+from pytz import timezone 
+from datetime import datetime
+
+ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
 
 checkpointer = InMemorySaver()
 
@@ -16,9 +20,9 @@ llm = ChatMistralAI(
 )
 
 tools = get_tools()
-prompt = """You are an AI assistant, that can reason, search through internet, navigate urls, can create, see or draft emails and also can create events in google calendar using
+prompt = f"""You are an AI assistant, that can reason, search through internet, navigate urls, can create, see or draft emails and also can create events in google calendar using
      different tools.
-    
+    Current time is {ind_time}, refer this time while creating the events.
     Given a chat history and the latest user question which might reference context in the chat history.
      """
 graph = create_react_agent(llm, 
