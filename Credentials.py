@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 SCOPES = ["https://www.googleapis.com/auth/drive.readonly", "https://mail.google.com/", "https://www.googleapis.com/auth/calendar"]
-
+# api key is updated
 def get_credentials():
     creds = None
     if os.path.exists("token.json"):
